@@ -2,7 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Data.SqlClient;
+    using System.IO;
+    using System.Threading;
     using System.Threading.Tasks;
     using System.Web.Mvc;
     using System.Web.Optimization;
@@ -12,6 +15,9 @@
     using Microsoft.Azure.Services.AppAuthentication;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Auth;
+    using Microsoft.WindowsAzure.Storage.Blob;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -62,7 +68,6 @@
 
 #if !DEBUG
             InitializeAzureKeyVaultProvider();
-#endif
 
             try
             {
@@ -75,6 +80,7 @@
             {
                 throw;
             }
+#endif
         }
     }
 }
